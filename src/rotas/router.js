@@ -6,7 +6,6 @@ const router = express.Router()
 router.post('/', (req,resp)=>{
 
     const namebarb = req.body.barbeiro
-    console.log(namebarb)
     const data = {
         nome:  req.body.nome,
         celular:  req.body.celular,
@@ -37,7 +36,6 @@ router.post('/date', (req,resp)=>{
    
     const namebarb = req.body.barbeiro
     
-
     fetch(`https://barbeariaraboni-eb7b4-default-rtdb.firebaseio.com/${namebarb}.json`)
     .then(response=>response.json()).
        then(data=> { 
@@ -45,12 +43,9 @@ router.post('/date', (req,resp)=>{
         
             const valores = Object.values(data)
             const objdate = valores.filter((element)=>{return element.data == date}) // Filtrar pela data escolhida pelo cliente
-            console.log(objdate)
             const horas = objdate.map((element)=>{return {hora_formatada:element.hora}}) // trazer os horários para aquela data
             resp.status(200).json(horas)
 
-        
-       
     }) 
        .catch(error => {
         console.error('Erro:', error);
