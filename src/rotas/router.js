@@ -3,8 +3,6 @@ const app = express()
 const router = express.Router()
 
 
-
-
 router.post('/', (req,resp)=>{
 
     const namebarb = req.body.barbeiro
