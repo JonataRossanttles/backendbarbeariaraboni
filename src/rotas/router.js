@@ -55,6 +55,21 @@ router.post('/date', (req,resp)=>{
 
 })
 
+router.get('/consulta', (req,resp)=>{
+    
+    fetch(`https://barbeariaraboni-eb7b4-default-rtdb.firebaseio.com/.json`)
+    .then(response=>response.json()).
+       then(data=> { 
+       resp.status(200).json(data)
+               }) 
+       .catch(error => {
+        console.error('Erro:', error);
+        resp.status(500).send('Erro no servidor'); // Enviar uma resposta de erro ao cliente
+    });
+
+
+})
+
 
 
 module.exports = router
