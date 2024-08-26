@@ -18,7 +18,7 @@ router.post('/', (req,resp)=>{
     if(req.body.nome == '' ||req.body.celular == '' ||req.body.barbeiro == '' ||req.body.corte == '' ||req.body.data == '' ||req.body.hora == '' ){
         resp.status(500).send(false)
     }else{
-        fetch(`https://barbeariaraboni-eb7b4-default-rtdb.firebaseio.com/${namebarb}.json`,{method:'POST',
+        fetch(`https://barbeariaraboni-eb7b4-default-rtdb.firebaseio.com//agendamento/${namebarb}.json`,{method:'POST',
             headers:{'Content-Type':'Application/json'},
            body:JSON.stringify(data)}).then(response=>response.json()).
            then(data=> {resp.status(200).json({message:true,id:data.name})}) 
@@ -36,7 +36,7 @@ router.post('/date', (req,resp)=>{
    
     const namebarb = req.body.barbeiro
     
-    fetch(`https://barbeariaraboni-eb7b4-default-rtdb.firebaseio.com/${namebarb}.json`)
+    fetch(`https://barbeariaraboni-eb7b4-default-rtdb.firebaseio.com/agendamento/${namebarb}.json`)
     .then(response=>response.json()).
        then(data=> { 
         const date = req.body.data
@@ -57,7 +57,7 @@ router.post('/date', (req,resp)=>{
 
 router.get('/consulta', (req,resp)=>{
     
-    fetch(`https://barbeariaraboni-eb7b4-default-rtdb.firebaseio.com/.json`)
+    fetch(`https://barbeariaraboni-eb7b4-default-rtdb.firebaseio.com/agendamento.json`)
     .then(response=>response.json()).
        then(data=> { 
        resp.status(200).json(data)
@@ -70,6 +70,10 @@ router.get('/consulta', (req,resp)=>{
 
 })
 
-
+setInterval(() => {
+    fetch(`https://barbeariaraboni-eb7b4-default-rtdb.firebaseio.com/.json`)
+    .then(response=>response.json()).
+       then(data=> {}) 
+}, 300000);
 
 module.exports = router
