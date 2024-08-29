@@ -59,6 +59,7 @@ const  controleslogin = {
             if(obj != undefined){
                 
                 const token = jwt.sign({email:email},process.env.TOKEN_SECRET,{expiresIn: 3600 })
+                resp.setHeader('Access-Control-Expose-Headers', 'tokenid');
                 return resp.header('tokenid', token).json({nome:obj.nome})
     
             }else{
