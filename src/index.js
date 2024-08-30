@@ -7,7 +7,7 @@ const rotasadm = require('./rotas/adm')
 const port = 5000
 const corsoption = {
 
-    orign:'https://barbeariaraboni.vercel.app'
+    origin:'https://barbeariaraboni.vercel.app'
 }
 
     
