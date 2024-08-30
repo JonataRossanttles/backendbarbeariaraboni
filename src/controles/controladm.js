@@ -7,9 +7,6 @@ try{
     const token = req.headers.authorization
     const namebarb = req.body.barbeiro
     const data = req.body.data
-     
-  const [ano, mes, dia] = data.split('-');
-      const dataFormatada = `${dia}/${mes}/${ano}`;
     //validando o token
     if(!token){
         res.status(400).json({message:'Token não fornecido!'})
@@ -23,7 +20,7 @@ try{
                 }else{return response.json()}}).
                 then(dados=>{
                     const obj = Object.values(dados)
-                    const inf = obj.filter((element)=>{return element.data == dataFormatada })
+                    const inf = obj.filter((element)=>{return element.data == data })
                     res.status(200).header('authorization','true').json(inf)
                 })
 
