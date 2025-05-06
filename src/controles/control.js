@@ -56,7 +56,7 @@ const  controles = {
                 headers:{'Content-Type':'Application/json'},
                body:JSON.stringify(data)}).
                then(response=>{if(!response.ok){
-                return resp.status(400).json({message:'Requisição falhou'})
+                resp.status(400).json({message:'Requisição falhou'})
                 return null
             }else{
                return response.json()
@@ -77,7 +77,8 @@ const  controles = {
         
         fetch(`https://barbeariaraboni-eb7b4-default-rtdb.firebaseio.com/agendamento/${namebarb}.json`)
         .then(response=>{if(!response.ok){
-            return resp.status(400).json({message:'Requisição falhou'})
+            resp.status(400).json({message:'Requisição falhou'})
+            return null
         }else{
            return response.json()
         }
