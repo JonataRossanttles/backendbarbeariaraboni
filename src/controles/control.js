@@ -57,6 +57,7 @@ const  controles = {
                body:JSON.stringify(data)}).
                then(response=>{if(!response.ok){
                 return resp.status(400).json({message:'Requisição falhou'})
+                return null
             }else{
                return response.json()
             }
